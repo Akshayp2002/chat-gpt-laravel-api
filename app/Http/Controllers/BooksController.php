@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\post;
 class BooksController extends Controller
 {
     /**
@@ -13,14 +13,32 @@ class BooksController extends Controller
     public function index()
     {
         //
+        return view('form');
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+        // dd("helloooo");
+        // // dd($request->all());
+        $request->validate([
+            'title'          => 'required',
+            'name'         => 'required',
+            'age'        => 'required',
+            'description'   => 'required',
+        ]);
+
+
+        $post = new post();
+        $post->title = $request->title;
+        $post->name = $request->name;
+        $post->age = $request->age;
+        $post->description = $request->description;
+        $post->save();
+        return response()->json(['success' => 'Post created successfully.']);
     }
 
     /**

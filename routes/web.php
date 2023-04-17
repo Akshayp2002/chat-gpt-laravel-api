@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/form',[App\Http\Controllers\BooksController::class,'index']);
+Route::post('/submit-form',[App\Http\Controllers\BooksController::class,'create']);
+ 

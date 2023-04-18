@@ -17,10 +17,10 @@
   @endif
   <div class="card">
     <div class="card-header text-center font-weight-bold">
-      Laravel 8 - Add Blog Post Form Example
+    form 2
     </div>
     <div class="card-body">
-      <form id="postForm">
+      <form id="postForm">    
        @csrf
         <div class="form-group">
           <label for="exampleInputEmail1">Title</label>
@@ -38,60 +38,36 @@
           <label for="exampleInputEmail1">Description</label>
           <textarea name="description" id="description" class="form-control" required=""></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit"onclick="submitStudent()" class="btn btn-success submit-button">Submit</button>
       </form>
+      <div id="vanillajs"><b>Person info will be listed here.</b></div>
+
+<div id="jqueryjs"><b>Person info will be listed here.</b></div>
     </div>
-{{-- 
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Name</th>
-                <th>age</th>
-                <th>description</th>
-            </tr>
-        </thead>
-        <tbody>@if(isset($data))
-            @foreach ($data as $data)
-            <tr>
-                <td>{{$data->title}}</td>
-                <td>{{$data->name}}</td>
-                <td>{{$data->age}}</td>
-                <td>{{$data->description}}</td>
-            </tr>
-            @endforeach
-            @endif
-        </tbody>
-    </table> --}}
   </div>
 </div>  
 </body>
 <script>
-     $('#postForm').on('submit',function(e){
-        e.preventDefault();
-        let title = $('#title').val();
-        let name = $('#name').val();
-        let age = $('#age').val();
-        let description = $('#description').val();
-            $.ajax({
-                type: "POST",
-                url:'/submit-form',
-                headers: 
-                {
+$('form').submit(function (e) {
+    e.preventDefault();
+
+    var formData = $(this).serialize();
+
+    $.ajax({
+        headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                data: 
-                {
-                "_token": "{{ csrf_token() }}",
-                title: title,
-                name: name,
-                age: age,
-                description: description,
-                },
-                success: function (response) {
-                    alert(response['success']);
-                },
-            })
+        type: "POST",
+        cache: false,
+        url: '/submit-form2',
+        data:formData,
+
+        success: function (msg) {
+            //alert("Success!");
+            document.getElementById("vanillajs").innerHTML = msg;
+            $("#jqueryjs").html("<p>" + msg + "</p>");
+        }
     });
-    </script>
+});
+</script>
 </html>

@@ -20,3 +20,8 @@ Route::get('/', function () {
 Route::get('/form',[App\Http\Controllers\BooksController::class,'index']);
 Route::post('/submit-form',[App\Http\Controllers\BooksController::class,'create']);
  
+
+
+Route::get('/form2',[App\Http\Controllers\form2::class,'index']);
+Route::post('/submit-form2',[App\Http\Controllers\form2::class,'create']);
+ 

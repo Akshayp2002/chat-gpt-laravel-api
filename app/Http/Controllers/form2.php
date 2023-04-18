@@ -4,33 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\post;
-class BooksController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     * https://therealprogrammer.com/laravel-9-crud-using-ajax/    check it
-     */
+class form2 extends Controller
+{ 
+
     public function index()
     {
         //
-        return view('form');
+        return view('form2');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create(Request $request)
     {
         //
         // dd("helloooo");
-        // // dd($request->all());
+        // dd($request->all());
         $request->validate([
             'title'          => 'required',
             'name'         => 'required',
             'age'        => 'required',
             'description'   => 'required',
         ]);
-
 
         $post = new post();
         $post->title = $request->title;
@@ -39,10 +31,31 @@ class BooksController extends Controller
         $post->description = $request->description;
         $save = $post->save();
 
-        $data = post::where('title','hi')->first();
+        $data = post::all();
+        // dd($data);
 
-dd($data);
-        return response()->json(['success' => 'Post created successfully.']);
+        foreach($data as $key=>$value){
+            $person[] = array(
+                'title' =>$value->title,
+                'name' => $value->name,
+                'age' => $value->age,
+                'description' => $value->description
+            );
+
+        }
+        foreach($person as $key=>$val){
+            $name[] = array(
+                'name'=> $val->name,
+            );
+        }
+
+        // $person = array(
+        //     'name' => $data->name,
+        //     'age' => $data->age,
+        //     'description' => $data->description
+        // );
+    dd($name);
+        return response()->json(['success' => 'Post created successfully form 2.']);
     }
 
     /**

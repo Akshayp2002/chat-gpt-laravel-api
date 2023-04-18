@@ -20,28 +20,6 @@
       Laravel 8 - Add Blog Post Form Example
     </div>
     <div class="card-body">
-      <form id="postForm">
-       @csrf
-        <div class="form-group">
-          <label for="exampleInputEmail1">Title</label>
-          <input type="text" id="title" name="title" class="form-control" required="">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Name</label>
-            <input type="text" id="name" name="name" class="form-control" required="">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">age</label>
-            <input type="text" id="age" name="age" class="form-control" required="">
-          </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Description</label>
-          <textarea name="description" id="description" class="form-control" required=""></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
-{{-- 
     <table>
         <thead>
             <tr>
@@ -51,7 +29,7 @@
                 <th>description</th>
             </tr>
         </thead>
-        <tbody>@if(isset($data))
+        <tbody>
             @foreach ($data as $data)
             <tr>
                 <td>{{$data->title}}</td>
@@ -60,13 +38,13 @@
                 <td>{{$data->description}}</td>
             </tr>
             @endforeach
-            @endif
         </tbody>
-    </table> --}}
+    </table>
+</div>
   </div>
 </div>  
 </body>
-<script>
+{{-- <script>
      $('#postForm').on('submit',function(e){
         e.preventDefault();
         let title = $('#title').val();
@@ -93,5 +71,5 @@
                 },
             })
     });
-    </script>
+    </script> --}}
 </html>

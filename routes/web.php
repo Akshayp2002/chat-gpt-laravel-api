@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use OpenAI\Laravel\Facades\OpenAI;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,3 +25,14 @@ Route::post('/submit-form',[App\Http\Controllers\BooksController::class,'create'
 Route::get('/form2',[App\Http\Controllers\form2::class,'index']);
 Route::post('/submit-form2',[App\Http\Controllers\form2::class,'create']);
  
+Route::get('/openai',function(){
+
+
+$result = OpenAI::completions()->create([
+    'model' => 'text-davinci-003',
+    'prompt' => 'what is laravel',  //prompt that we need to search
+    'max_tokens' => 100,  //text limit 
+]);
+
+echo $result['choices'][0]['text']; //open ai output.
+});

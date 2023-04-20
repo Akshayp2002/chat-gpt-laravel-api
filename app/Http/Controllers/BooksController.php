@@ -8,7 +8,7 @@ class BooksController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * https://therealprogrammer.com/laravel-9-crud-using-ajax/    check it
+     * https://therealprogrammer.com/laravel-9-crud-using-ajax/
      */
     public function index()
     {
@@ -21,9 +21,7 @@ class BooksController extends Controller
      */
     public function create(Request $request)
     {
-        //
-        // dd("helloooo");
-        // // dd($request->all());
+       
         $request->validate([
             'title'          => 'required',
             'name'         => 'required',
@@ -41,7 +39,7 @@ class BooksController extends Controller
 
         $data = post::where('title','hi')->first();
 
-dd($data);
+        dd($data);
         return response()->json(['success' => 'Post created successfully.']);
     }
 
@@ -50,7 +48,16 @@ dd($data);
      */
     public function store(Request $request)
     {
-        //
+        //store method
+        $post = new post();
+        $post->title = $request->title;
+        $post->name = $request->name;
+        $post->age = $request->age;
+        $post->description = $request->description;
+        $post->save();
+
+        return response()->json(['success' => 'Post created successfully.']);
+
     }
 
     /**
@@ -66,7 +73,14 @@ dd($data);
      */
     public function edit(string $id)
     {
-        //
+      
+        //update method
+        $post = new post();
+        $post->id = $id;
+        $post->title = $request->title;
+        $post->name = $request->name;
+        $post->age = $request->age;
+        $post->description = $request->description;
     }
 
     /**
@@ -74,14 +88,29 @@ dd($data);
      */
     public function update(Request $request, string $id)
     {
-        //
-    }
+        //update method
+        $post = new post();
+        $post->title = $request->title;
+        $post->name = $request->name;
+        $post->age = $request->age;
+        $post->description = $request->description;
+        $post->save();
 
-    /**
-     * Remove the specified resource from storage.
-     */
+        return response()->json(['success' => 'Post updated successfully.']);
+
+    }
     public function destroy(string $id)
     {
-        //
+        //destroy method
+        $post = new post();
+        $post->id = $id;
+        $post->delete();
+
+        return response()->json(['success' => 'Post deleted successfully.']);
+
     }
-}
+
+        
+
+    }
+

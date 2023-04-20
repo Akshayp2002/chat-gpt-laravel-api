@@ -71,3 +71,126 @@ $('form').submit(function (e) {
 });
 </script>
 </html>
+// form tag with username and password fields 
+<form action="/login" method="post">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Username</label>
+    <input type="text" id="username" name="username" class="form-control" required="">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Password</label>
+      <input type="password" id="password" name="password" class="form-control" required="">
+      </div>
+      <button type="submit" class="btn btn-success">Login</button>
+      </form>
+
+//form tag with unsername password confirm password 
+<form action="/login" method="post">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Username</label>
+    <input type="text" id="username" name="username" class="form-control" required="">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Password</label>
+      <input type="password" id="password" name="password" class="form-control" required="">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Confirm Password</label>
+        
+        <input type="password" id="password2" name="password2" class="form-control" required="">
+        </div>
+        <button type="submit" class="btn btn-success">Login</button>
+        </form>
+        </body>
+        </html>
+
+        //table with 3 column
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>John</td>
+                  <td>john@gmail.com</td>
+                  <td>123-456-7890</td>
+                  </tr>
+                  <tr>
+                    <td>John</td>
+                    <td>john@gmail.com</td>
+                    <td>123-456-7890</td>
+                    </tr>
+                    <tr>
+                      <td>John</td>
+                      <td>john@gmail.com</td>
+
+                      <td>123-456-7890</td>
+                      </tr>
+                      </tbody>
+                      </table>
+
+//js function for ajax form submission
+<script>
+function login(form) {
+  var email = form.email.value;
+  var password = form.password.value;
+  $.ajax({
+    type: "POST",
+    url: "/login",
+    data: {email: email, password: password},
+    success: function(data) {
+      if (data.success) {
+        window.location.href = "/";
+        } else {
+          alert("Invalid email or password");
+          }
+          }
+          });
+          }
+</script>
+//
+
+//registeration form
+<form action="/register" method="post">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email</label>
+    <input type="email" id="email" name="email" class="form-control" required="">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" id="password" name="password" class="form-control" required="">
+      </div>
+      <button type="submit" class="btn btn-primary">Sign up</button>
+      </form>
+
+
+//login form
+<form action="/login" method="post">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email</label>
+    <input type="email" id="email" name="email" class="form-control" required="">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" id="password" name="password" class="form-control" required="">
+      </div>
+      <button type="submit" class="btn btn-primary">Sign in</button>
+      </form>
+
+
+      //login form
+      <form action="/login" method="post">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email</label>
+          <input type="email" id="email" name="email" class="form-control" required="">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" id="password" name="password" class="form-control" required="">
+            </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
